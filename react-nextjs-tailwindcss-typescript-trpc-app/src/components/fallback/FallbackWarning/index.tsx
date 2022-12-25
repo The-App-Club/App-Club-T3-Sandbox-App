@@ -1,9 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
+
 import {Box, Button, Divider, Typography} from '@mui/joy'
 
 import Warning from '@/components/icon/Warning'
 import {Spacer} from '@/components/ui/Spacer'
+import theme from '@/config/theme'
 
 const FallbackWarning = ({
   status = 500,
@@ -51,6 +53,7 @@ const FallbackWarning = ({
             font-size: 1.125rem; /* 18px */
             line-height: 1.75rem; /* 28px */
             color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
+            font-family: ${theme.typography.display2.fontFamily};
           `}
         >
           {message}
@@ -62,6 +65,7 @@ const FallbackWarning = ({
             font-size: 0.875rem; /* 14px */
             line-height: 1.25rem; /* 20px */
             color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
+            font-family: ${theme.typography.display1.fontFamily};
           `}
         >
           原状回復の余地があります。リトライしてみてください。
@@ -84,6 +88,9 @@ const FallbackWarning = ({
               refetch()
             }
           }}
+          css={css`
+            font-family: ${theme.typography.display1.fontFamily};
+          `}
         >
           リトライ
         </Button>
