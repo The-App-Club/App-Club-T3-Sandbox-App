@@ -6,10 +6,12 @@ import {FallbackNotFound} from '@/components/fallback/FallbackNotFound'
 import {FallbackNotAuth} from '@/components/fallback/FallbackNotAuth'
 import {FallbackDataEmpty} from '@/components/fallback/FallbackDataEmpty'
 import {FallbackWarning} from '@/components/fallback/FallbackWarning'
+import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 
 const FallbackPage: NextPage = () => {
   return (
     <AuthLayout>
+      <FallbackLoading iconSize={120} />
       <FallbackDataEmpty iconSize={120} />
       <FallbackNotAuth iconSize={120} />
       <FallbackNotFound iconSize={120} />
