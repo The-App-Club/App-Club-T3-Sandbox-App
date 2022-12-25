@@ -2,13 +2,13 @@
 import {css} from '@emotion/react'
 import {Box, Button, Divider, Typography} from '@mui/joy'
 
-import Error from '@/components/icon/Error'
+import Warning from '@/components/icon/Warning'
 import {Spacer} from '@/components/ui/Spacer'
 
-const FallbackError = ({
+const FallbackWarning = ({
   status = 500,
   iconSize = 150,
-  message = `Something went wrong...`,
+  message = `Something went wrong. But maybe you can recover on your own...`,
   refetch,
 }: {
   status?: number
@@ -33,7 +33,7 @@ const FallbackError = ({
           flex-direction: column;
         `}
       >
-        <Error width={iconSize} height={iconSize} />
+        <Warning width={iconSize} height={iconSize} />
         <Typography
           component={'strong'}
           css={css`
@@ -64,17 +64,7 @@ const FallbackError = ({
             color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
           `}
         >
-          システムエラーが起きました。管理者に連絡してください。[090-1234-5678]
-        </Typography>
-        <Typography
-          css={css`
-            font-weight: 700;
-            font-size: 0.875rem; /* 14px */
-            line-height: 1.25rem; /* 20px */
-            color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
-          `}
-        >
-          セルフリカバリーを何度か試行してもデータが表示されない場合はお手数をおかけしますが、ご連絡くださいませ
+          原状回復の余地があります。リトライしてみてください。
         </Typography>
       </Box>
       <Spacer />
@@ -95,11 +85,11 @@ const FallbackError = ({
             }
           }}
         >
-          セルフリカバリー
+          リトライ
         </Button>
       </Box>
     </Box>
   )
 }
 
-export {FallbackError}
+export {FallbackWarning}

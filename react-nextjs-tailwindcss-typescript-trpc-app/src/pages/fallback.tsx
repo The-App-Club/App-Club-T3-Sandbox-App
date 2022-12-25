@@ -5,15 +5,17 @@ import {FallbackError} from '@/components/fallback/FallbackError'
 import {FallbackNotFound} from '@/components/fallback/FallbackNotFound'
 import {FallbackNotAuth} from '@/components/fallback/FallbackNotAuth'
 import {FallbackDataEmpty} from '@/components/fallback/FallbackDataEmpty'
+import {FallbackWarning} from '@/components/fallback/FallbackWarning'
 
 const FallbackPage: NextPage = () => {
   return (
     <AuthLayout>
-      <FallbackDataEmpty iconSize={200} />
-      <FallbackNotAuth iconSize={200} />
-      <FallbackNotFound iconSize={200} />
-      <FallbackNoMatch iconSize={200} />
-      <FallbackError iconSize={200} />
+      <FallbackDataEmpty iconSize={120} />
+      <FallbackNotAuth iconSize={120} />
+      <FallbackNotFound iconSize={120} />
+      <FallbackNoMatch iconSize={120} />
+      <FallbackError iconSize={120} />
+      <FallbackWarning iconSize={120} />
     </AuthLayout>
   )
 }
