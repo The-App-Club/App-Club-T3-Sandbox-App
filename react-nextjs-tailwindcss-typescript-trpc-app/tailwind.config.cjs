@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  corePlugins: {
+    preflight: false,
+  },
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
@@ -15,4 +18,4 @@ module.exports = {
     require('tailwindcss-no-scrollbar'),
     require('tailwindcss-global-dark'),
   ],
-};
+}
