@@ -5,7 +5,7 @@ import '@fontsource/noto-sans-jp'
 
 const theme = extendTheme({
   fontFamily: {
-    body: 'Inter, sans-serif',
+    body: 'Inter, serif',
   },
   typography: {
     display1: {

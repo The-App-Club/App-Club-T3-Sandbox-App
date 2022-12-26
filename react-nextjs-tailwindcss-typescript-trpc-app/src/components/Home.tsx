@@ -19,6 +19,9 @@ const Home = () => {
 
   return (
     <Box className={'mx-auto w-full max-w-7xl'}>
+      <NextLink href={'/form'}>
+        <a>Form</a>
+      </NextLink>
       <NextLink href={'/sample'}>
         <a>Sample</a>
       </NextLink>
