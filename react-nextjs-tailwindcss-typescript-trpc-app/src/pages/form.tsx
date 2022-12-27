@@ -8,6 +8,9 @@ import type {NextPage} from 'next'
 import {Box, Button, TextField} from '@mui/joy'
 import Spacer from '@/components/ui/Spacer'
 
+import type {AxiosProgressEvent} from 'axios'
+import axios from 'axios'
+
 const FormPage: NextPage = () => {
   const {
     register,
@@ -22,18 +25,20 @@ const FormPage: NextPage = () => {
     const formData = new FormData()
     formData.append('example', willUploadedData.example)
     formData.append('file', willUploadedData.file)
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        body: formData,
-      })
-      console.log(response)
-    } catch (error) {
-      console.log(error)
-    }
+
+    const response = await axios.post('/api/upload', formData, {
+      headers: {'content-type': 'multipart/form-data'},
+      onUploadProgress: (event: AxiosProgressEvent) => {
+        if (!event.total) {
+          return
+        }
+        console.log(
+          `Current progress:`,
+          Math.round((event.loaded * 100) / event.total)
+        )
+      },
+    })
+    console.log('response', response.data)
   }
 
   const renderPreview = () => {
@@ -72,7 +77,6 @@ const FormPage: NextPage = () => {
         component={'form'}
         onSubmit={handleSubmit(onSubmit)}
       >
-        {/* <input type="file" name="files[]" /> */}
         <TextField defaultValue="test" {...register('example')} />
         <Spacer />
         {renderPreview()}
