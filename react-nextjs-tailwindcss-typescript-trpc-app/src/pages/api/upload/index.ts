@@ -1,3 +1,5 @@
+import {renameSync} from 'fs'
+
 import multer from 'multer'
 
 import type {NextApiRequest, NextApiResponse} from 'next'
@@ -22,7 +24,7 @@ export default async function handler(
 ) {
   const doUploader = upload.fields([
     {name: 'example', maxCount: 1},
-    {name: 'file', maxCount: 1},
+    {name: 'avator', maxCount: 1},
   ])
 
   doUploader(req as any, res as any, (err: any) => {
@@ -34,8 +36,23 @@ export default async function handler(
         },
       })
     }
-
-    console.log(req.file)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    req.files['avator'].forEach((file) => {
+      // https://github.com/expressjs/multer/issues/1104#issuecomment-1152987772
+      file.originalname = Buffer.from(file.originalname, 'latin1').toString(
+        'utf8'
+      )
+      file.filename = file.originalname
+      renameSync(file.path, `${UPLOADED_DIR}/${file.originalname}`)
+    })
+    const data = {
+      ...req.body,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      avator: req.files['avator'][0],
+    }
+    console.log(data)
 
     res.status(200).json({
       data: {
@@ -43,22 +60,4 @@ export default async function handler(
       },
     })
   })
-
-  // try {
-  //   const body: any = await new Promise((resolve, reject) => {
-  //     upload.fields([
-  //       {name: 'example', maxCount: 1},
-  //       {name: 'file', maxCount: 1},
-  //     ])(req, res, (err: any) => {
-  //       if (err) return reject(err)
-  //       resolve({file: req.file, path: req.body.path})
-  //     })
-  //   })
-  //   console.log(body.file)
-  //   res.status(200).json({
-  //     fileName: body.file.originalname,
-  //   })
-  // } catch (e) {
-  //   res.status(500).send(e)
-  // }
 }

@@ -18,12 +18,12 @@ const FormPage = () => {
     formState: {errors},
   } = useForm()
   const onSubmit = async (data: any) => {
-    const [file] = [...watch('file')]
+    const [file] = [...watch('avator')]
     const willUploadedData = {...data, file}
     console.log(willUploadedData)
     const formData = new FormData()
     formData.append('example', willUploadedData.example)
-    formData.append('file', willUploadedData.file)
+    formData.append('avator', willUploadedData.file)
 
     const response = await axios.post('/api/upload', formData, {
       headers: {'content-type': 'multipart/form-data'},
@@ -41,10 +41,10 @@ const FormPage = () => {
   }
 
   const renderPreview = () => {
-    if (!watch('file')) {
+    if (!watch('avator')) {
       return null
     }
-    const [file] = [...watch('file')]
+    const [file] = [...watch('avator')]
     if (!file) {
       return null
     }
@@ -93,7 +93,7 @@ const FormPage = () => {
             type="file"
             hidden
             accept=".jpg,.png,.jpeg"
-            {...register('file')}
+            {...register('avator')}
           />
         </Button>
         <Spacer />
