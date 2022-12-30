@@ -1,11 +1,12 @@
-import {trpc} from '@/utils/trpc'
 
+import {lazy, Suspense} from 'react'
+
+import {Box} from '@mui/joy'
 import {type NextPage} from 'next'
 
 import ErrorBoundary from '@/components/fallback/ErrorBoundary'
-import {lazy, Suspense} from 'react'
-import {Box} from '@mui/joy'
 import {FallbackLoading} from '@/components/fallback/FallbackLoading'
+import {trpc} from '@/utils/trpc'
 
 const Sample = lazy(() => import('@/features/sample/components/Sample'))
 

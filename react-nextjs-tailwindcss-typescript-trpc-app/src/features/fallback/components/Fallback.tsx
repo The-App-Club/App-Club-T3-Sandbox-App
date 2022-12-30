@@ -1,13 +1,14 @@
-import AuthLayout from '@/layouts/AuthLayout'
-import {FallbackNotMatch} from '@/components/fallback/FallbackNotMatch'
-import {FallbackError} from '@/components/fallback/FallbackError'
-import {FallbackNotFound} from '@/components/fallback/FallbackNotFound'
-import {FallbackNotAuth} from '@/components/fallback/FallbackNotAuth'
-import {FallbackDataEmpty} from '@/components/fallback/FallbackDataEmpty'
-import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 
 import NextLink from 'next/link'
+
 import {Box, Divider, Typography} from '@mui/joy'
+
+import {FallbackDataEmpty} from '@/components/fallback/FallbackDataEmpty'
+import {FallbackError} from '@/components/fallback/FallbackError'
+import {FallbackLoading} from '@/components/fallback/FallbackLoading'
+import {FallbackNotAuth} from '@/components/fallback/FallbackNotAuth'
+import {FallbackNotFound} from '@/components/fallback/FallbackNotFound'
+import {FallbackNotMatch} from '@/components/fallback/FallbackNotMatch'
 import Spacer from '@/components/ui/Spacer'
 
 const FallbackPage = () => {

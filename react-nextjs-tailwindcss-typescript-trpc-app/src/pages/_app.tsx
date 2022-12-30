@@ -1,22 +1,23 @@
+import {useCallback, useEffect} from 'react'
+
 import type {AppProps} from 'next/app'
+import {useRouter} from 'next/router'
 
-import {trpc} from '@/utils/trpc'
-
-import '@/styles/globals.css'
-import {CssVarsProvider} from '@mui/joy/styles'
-import theme from '@/config/theme'
+import {CacheProvider} from '@emotion/react'
 import {CssBaseline} from '@mui/joy'
+import {CssVarsProvider} from '@mui/joy/styles'
 import NextNProgress from 'nextjs-progressbar'
 import {RecoilRoot} from 'recoil'
-import type {EmotionCache} from '@emotion/react'
-import {CacheProvider} from '@emotion/react'
-import createEmotionCache from '@/config/createEmotionCache'
-import {useRouter} from 'next/router'
-import useHeaderMenu from '@/libs/useHeaderMenu'
-import {useCallback, useEffect} from 'react'
-import {matchedActivePage} from '@/config/routes'
 
+import createEmotionCache from '@/config/createEmotionCache'
+import {matchedActivePage} from '@/config/routes'
+import theme from '@/config/theme'
 import AuthLayout from '@/layouts/AuthLayout'
+import useHeaderMenu from '@/libs/useHeaderMenu'
+import {trpc} from '@/utils/trpc'
+
+import type {EmotionCache} from '@emotion/react'
+import '@/styles/globals.css'
 
 const BebopApp = (props: AppProps) => {
   return (

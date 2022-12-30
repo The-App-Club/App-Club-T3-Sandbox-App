@@ -3,8 +3,9 @@ import {useEffect, useState} from 'react'
 
 import {css} from '@emotion/react'
 import {Box, Button, Typography} from '@mui/joy'
-import type {FallbackProps} from 'react-error-boundary'
 import {ErrorBoundary} from 'react-error-boundary'
+
+import type {FallbackProps} from 'react-error-boundary'
 
 const ErrorFallback = ({error, resetErrorBoundary}: FallbackProps) => {
   return (

@@ -1,8 +1,9 @@
+import {lazy, Suspense} from 'react'
+
+import {Box} from '@mui/joy'
 import {type NextPage} from 'next'
 
 import ErrorBoundary from '@/components/fallback/ErrorBoundary'
-import {lazy, Suspense} from 'react'
-import {Box} from '@mui/joy'
 import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 
 const Home = lazy(() => import('@/features/home/components/Home'))

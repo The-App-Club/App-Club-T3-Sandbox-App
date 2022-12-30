@@ -1,5 +1,6 @@
-import type {NextApiRequest, NextApiResponse} from 'next'
 import multer from 'multer'
+
+import type {NextApiRequest, NextApiResponse} from 'next'
 
 export const config = {
   api: {

@@ -1,6 +1,8 @@
-import type {NextApiRequest, NextApiResponse} from 'next'
-import formidable from 'formidable'
 import {renameSync} from 'fs'
+
+import formidable from 'formidable'
+
+import type {NextApiRequest, NextApiResponse} from 'next'
 
 export const config = {
   api: {

@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import {css} from '@emotion/react'
+
+
+import NextLink from 'next/link'
+
+import {Box, Divider, Typography} from '@mui/joy'
+import {Cube, Heart, Horse} from 'phosphor-react'
 
 import Spacer from '@/components/ui/Spacer'
-import {Box, Divider, Typography} from '@mui/joy'
-import NextLink from 'next/link'
-import {Horse, Heart, Cube} from 'phosphor-react'
 
 const Sample = () => {
   return (

@@ -1,5 +1,4 @@
-import {User} from '@/domains/user'
-import {router, publicProcedure} from '@/server/trpc/trpc'
+import {publicProcedure, router} from '@/server/trpc/trpc'
 
 export const usersRouter = router({
   listUp: publicProcedure.query(({ctx, input}) => {

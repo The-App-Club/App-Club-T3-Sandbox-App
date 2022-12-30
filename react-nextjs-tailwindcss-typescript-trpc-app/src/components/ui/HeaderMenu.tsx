@@ -6,9 +6,10 @@ import NextLink from 'next/link'
 import {css} from '@emotion/react'
 import {Link} from '@mui/joy'
 
-import type {HeaderMenu as Menu} from '@/config/headerMenu'
-import useHeaderMenu from '@/libs/useHeaderMenu'
 import theme from '@/config/theme'
+import useHeaderMenu from '@/libs/useHeaderMenu'
+
+import type {HeaderMenu as Menu} from '@/config/headerMenu'
 
 const HeaderMenu = ({menu}: {menu: Menu}) => {
   // https://nextjs.org/docs/messages/react-hydration-error

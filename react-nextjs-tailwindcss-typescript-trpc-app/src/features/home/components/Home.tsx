@@ -1,10 +1,10 @@
-import {User} from '@/domains/user'
-import {trpc} from '@/utils/trpc'
 import {Box, Button, Divider, Typography} from '@mui/joy'
-import {FallbackLoading} from '@/components/fallback/FallbackLoading'
-import {FallbackError} from '@/components/fallback/FallbackError'
+
 import {FallbackDataEmpty} from '@/components/fallback/FallbackDataEmpty'
+import {FallbackError} from '@/components/fallback/FallbackError'
+import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 import Spacer from '@/components/ui/Spacer'
+import {trpc} from '@/utils/trpc'
 
 const Home = () => {
   const {data, error, refetch, isLoading, remove} = trpc.users.listUp.useQuery()
