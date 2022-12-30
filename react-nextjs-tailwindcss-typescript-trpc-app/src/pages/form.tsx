@@ -1,5 +1,4 @@
 import {type NextPage} from 'next'
-import AuthLayout from '@/layouts/AuthLayout'
 
 import ErrorBoundary from '@/components/fallback/ErrorBoundary'
 import {lazy, Suspense} from 'react'
@@ -22,9 +21,7 @@ const FormPage: NextPage = () => {
           </Box>
         }
       >
-        <AuthLayout>
-          <Form />
-        </AuthLayout>
+        <Form />
       </Suspense>
     </ErrorBoundary>
   )

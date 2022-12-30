@@ -16,6 +16,8 @@ import useHeaderMenu from '@/libs/useHeaderMenu'
 import {useCallback, useEffect} from 'react'
 import {matchedActivePage} from '@/config/routes'
 
+import AuthLayout from '@/layouts/AuthLayout'
+
 const BebopApp = (props: AppProps) => {
   return (
     <RecoilRoot>
@@ -68,7 +70,9 @@ const MyApp = (props: MyAppProps) => {
     <CacheProvider value={emotionCache}>
       <CssVarsProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <AuthLayout>
+          <Component {...pageProps} />
+        </AuthLayout>
       </CssVarsProvider>
     </CacheProvider>
   )
