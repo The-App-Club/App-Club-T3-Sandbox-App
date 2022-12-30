@@ -6,10 +6,21 @@ import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 import Spacer from '@/components/ui/Spacer'
 import {trpc} from '@/utils/trpc'
 
+import type {UsersData} from '@/features/home/types'
+import type {ErrorData} from '@/types/error'
+
 const Home = () => {
   const {data, error, refetch, isLoading, remove} = trpc.users.listUp.useQuery()
 
-  const renderContent = ({data, error, isLoading}) => {
+  const renderContent = ({
+    data,
+    error,
+    isLoading,
+  }: {
+    data: UsersData
+    error: ErrorData
+    isLoading: boolean
+  }) => {
     if (error) {
       return <FallbackError />
     }
@@ -18,14 +29,14 @@ const Home = () => {
       return <FallbackLoading />
     }
 
-    if (data.length === 0) {
+    if (data?.length === 0) {
       return <FallbackDataEmpty />
     }
 
     return (
       <>
         {data?.map((item, index) => {
-          return <Typography key={index}>{item.name}</Typography>
+          return <Typography key={index}>{item?.name}</Typography>
         })}
       </>
     )

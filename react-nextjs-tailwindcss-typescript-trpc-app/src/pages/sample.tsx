@@ -1,4 +1,3 @@
-
 import {lazy, Suspense} from 'react'
 
 import {Box} from '@mui/joy'

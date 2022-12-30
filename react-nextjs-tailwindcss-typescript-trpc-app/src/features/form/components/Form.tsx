@@ -10,7 +10,6 @@ import Spacer from '@/components/ui/Spacer'
 
 import type {AxiosProgressEvent} from 'axios'
 
-
 const FormPage = () => {
   const {
     register,

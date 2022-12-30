@@ -2,7 +2,6 @@ import {publicProcedure, router} from '@/server/trpc/trpc'
 
 export const usersRouter = router({
   listUp: publicProcedure.query(({ctx, input}) => {
-    // throw new Error("a");
     return [
       {
         id: '1',

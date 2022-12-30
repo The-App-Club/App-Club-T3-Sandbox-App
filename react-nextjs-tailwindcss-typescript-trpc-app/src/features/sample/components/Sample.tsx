@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 
-
 import NextLink from 'next/link'
 
 import {Box, Divider, Typography} from '@mui/joy'
