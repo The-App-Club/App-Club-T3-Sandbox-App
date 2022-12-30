@@ -2,7 +2,7 @@
 import {css} from '@emotion/react'
 import {Box, Button, Divider, Typography} from '@mui/joy'
 
-import Error from '@/components/icon/Error'
+import Warning from '@/components/icon/Warning'
 import {Spacer} from '@/components/ui/Spacer'
 
 const FallbackError = ({
@@ -33,7 +33,7 @@ const FallbackError = ({
           flex-direction: column;
         `}
       >
-        <Error width={iconSize} height={iconSize} />
+        <Warning width={iconSize} height={iconSize} />
         <Typography
           component={'strong'}
           css={css`
@@ -64,7 +64,8 @@ const FallbackError = ({
             color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
           `}
         >
-          システムエラーが起きました。管理者に連絡してください。[090-1234-5678]
+          A system error has occurred. Please contact the administrator.
+          [090-1234-5678]
         </Typography>
         <Typography
           css={css`
@@ -74,7 +75,9 @@ const FallbackError = ({
             color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
           `}
         >
-          セルフリカバリーを何度か試行してもデータが表示されない場合はお手数をおかけしますが、ご連絡くださいませ
+          If you are still unable to view the data after several attempts at
+          self-recovery, we apologize for the inconvenience, but please contact
+          us!
         </Typography>
       </Box>
       <Spacer />
@@ -95,7 +98,7 @@ const FallbackError = ({
             }
           }}
         >
-          セルフリカバリー
+          Self Recovery
         </Button>
       </Box>
     </Box>

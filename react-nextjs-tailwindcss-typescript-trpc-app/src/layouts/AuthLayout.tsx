@@ -4,8 +4,8 @@ import {Button} from '@mui/joy'
 const AuthLayout = ({children}: {children: React.ReactNode}) => {
   return (
     <>
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2">
-        <Logo />
+      <header className="flex w-full items-center justify-between px-4 py-2 shadow-xl">
+        <Logo width={60} height={60} />
         <Button>Login</Button>
       </header>
       {children}

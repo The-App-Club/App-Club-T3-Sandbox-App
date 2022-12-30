@@ -5,7 +5,7 @@ import {Box, Typography} from '@mui/joy'
 import NotAuth from '@/components/icon/NotAuth'
 
 const FallbackNotAuth = ({
-  message = `ログインしてください`,
+  message = `Please log in`,
   iconSize = 150,
 }: {
   message?: string

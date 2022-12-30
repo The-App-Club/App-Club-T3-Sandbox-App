@@ -1,6 +1,6 @@
 import {type NextPage} from 'next'
 import AuthLayout from '@/layouts/AuthLayout'
-import Sample from '@/components/Sample'
+import Sample from '@/features/sample/components/Sample'
 import {trpc} from '@/utils/trpc'
 
 const SamplePage: NextPage = () => {

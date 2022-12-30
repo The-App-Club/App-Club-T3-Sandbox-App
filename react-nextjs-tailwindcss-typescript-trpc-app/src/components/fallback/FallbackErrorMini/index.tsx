@@ -32,7 +32,7 @@ const FallbackErrorMini = ({
           }
         }}
       >
-        セルフリカバリー
+        Self Recovery
       </Button>
     </Box>
   )

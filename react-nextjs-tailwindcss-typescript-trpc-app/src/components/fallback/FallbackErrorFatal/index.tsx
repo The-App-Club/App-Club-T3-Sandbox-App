@@ -1,16 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
+import {Box, Typography} from '@mui/joy'
 
-import {Box, Button, Divider, Typography} from '@mui/joy'
-
-import Warning from '@/components/icon/Warning'
+import Error from '@/components/icon/Error'
 import {Spacer} from '@/components/ui/Spacer'
-import theme from '@/config/theme'
 
-const FallbackWarning = ({
+const FallbackErrorFatal = ({
   status = 500,
   iconSize = 150,
-  message = `Something went wrong. But maybe you can recover on your own...`,
+  message = `Something went wrong...`,
   refetch,
 }: {
   status?: number
@@ -35,7 +33,7 @@ const FallbackWarning = ({
           flex-direction: column;
         `}
       >
-        <Warning width={iconSize} height={iconSize} />
+        <Error width={iconSize} height={iconSize} />
         <Typography
           component={'strong'}
           css={css`
@@ -53,7 +51,6 @@ const FallbackWarning = ({
             font-size: 1.125rem; /* 18px */
             line-height: 1.75rem; /* 28px */
             color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
-            font-family: ${theme.typography.display2.fontFamily};
           `}
         >
           {message}
@@ -65,38 +62,14 @@ const FallbackWarning = ({
             font-size: 0.875rem; /* 14px */
             line-height: 1.25rem; /* 20px */
             color: #6b7280; // https://tailwindcss.com/docs/customizing-colors
-            font-family: ${theme.typography.display1.fontFamily};
           `}
         >
-          原状回復の余地があります。リトライしてみてください。
+          A system error has occurred. Please contact the administrator.
+          [090-1234-5678]
         </Typography>
-      </Box>
-      <Spacer />
-      <Divider />
-      <Spacer />
-      <Box
-        css={css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        `}
-      >
-        <Button
-          variant="solid"
-          onClick={() => {
-            if (refetch) {
-              refetch()
-            }
-          }}
-          css={css`
-            font-family: ${theme.typography.display1.fontFamily};
-          `}
-        >
-          リトライ
-        </Button>
       </Box>
     </Box>
   )
 }
 
-export {FallbackWarning}
+export {FallbackErrorFatal}

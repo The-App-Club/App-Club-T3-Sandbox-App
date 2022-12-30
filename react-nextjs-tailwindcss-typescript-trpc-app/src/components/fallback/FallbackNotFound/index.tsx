@@ -5,7 +5,7 @@ import {Box, Typography} from '@mui/joy'
 import NotFound from '@/components/icon/NotFound'
 
 const FallbackNotFound = ({
-  message = `ページがありません`,
+  message = `Page is missing`,
   iconSize = 150,
 }: {
   message?: string

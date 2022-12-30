@@ -4,8 +4,8 @@ import {Box, Typography} from '@mui/joy'
 
 import NotMatch from '@/components/icon/NotMatch'
 
-const FallbackNoMatch = ({
-  message = `該当データがありません`,
+const FallbackNotMatch = ({
+  message = `No applicable data`,
   iconSize = 150,
 }: {
   message?: string
@@ -36,4 +36,4 @@ const FallbackNoMatch = ({
   )
 }
 
-export {FallbackNoMatch}
+export {FallbackNotMatch}

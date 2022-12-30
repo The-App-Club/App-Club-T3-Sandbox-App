@@ -4,7 +4,7 @@ import {Box, Button, Typography} from '@mui/joy'
 import NextLink from 'next/link'
 import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 import {FallbackError} from '@/components/fallback/FallbackError'
-import {FallbackDataEmpty} from './fallback/FallbackDataEmpty'
+import {FallbackDataEmpty} from '../../../components/fallback/FallbackDataEmpty'
 
 const Home = () => {
   const {data, error, refetch, isLoading, remove} = trpc.users.listUp.useQuery()
