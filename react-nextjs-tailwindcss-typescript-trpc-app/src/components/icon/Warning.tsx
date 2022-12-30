@@ -22,8 +22,8 @@ const Warning = ({
       <path
         fill="none"
         stroke="#ec4f3a"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M50.271 42.598v15.674"
         css={css`
           stroke-width: 6px;
@@ -33,8 +33,8 @@ const Warning = ({
         d="M44.62 17.521 11.246 77.078c-2.331 4.172.571 9.388 5.233 9.405h66.749c4.662-.017 7.564-5.233 5.234-9.405L55.087 17.521a5.935 5.935 0 0 0-10.444-.041l-.023.041Z"
         fill="none"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         css={css`
           stroke-width: 6px;
         `}

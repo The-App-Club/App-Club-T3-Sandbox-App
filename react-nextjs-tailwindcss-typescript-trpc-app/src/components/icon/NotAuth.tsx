@@ -22,8 +22,8 @@ const NotAuth = ({
         r="20"
         fill="none"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         css={css`
           stroke-width: 13.6594px;
         `}
@@ -32,8 +32,8 @@ const NotAuth = ({
       <path
         fill="none"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         css={css`
           stroke-width: 6px;
         `}
@@ -47,8 +47,8 @@ const NotAuth = ({
         rx="8"
         fill="none"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         css={css`
           stroke-width: 6px;
         `}
@@ -57,8 +57,8 @@ const NotAuth = ({
         d="M35.003 38.813V24.416c0-11.081 12.695-18.007 22.85-12.466 4.713 2.572 7.617 7.325 7.617 12.466v14.397"
         fill="none"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         css={css`
           stroke-width: 6px;
         `}

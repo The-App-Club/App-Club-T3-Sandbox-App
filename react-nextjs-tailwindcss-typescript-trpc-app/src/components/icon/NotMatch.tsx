@@ -25,8 +25,8 @@ const NotMatch = ({
       />
       <path
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         css={css`
           stroke-width: 6px;
         `}
