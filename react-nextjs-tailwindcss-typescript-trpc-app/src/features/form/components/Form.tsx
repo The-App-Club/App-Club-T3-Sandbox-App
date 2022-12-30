@@ -4,8 +4,7 @@ import NextLink from 'next/link'
 
 import {useForm} from 'react-hook-form'
 
-import type {NextPage} from 'next'
-import {Box, Button, TextField} from '@mui/joy'
+import {Box, Button, Divider, TextField, Typography} from '@mui/joy'
 import Spacer from '@/components/ui/Spacer'
 
 import type {AxiosProgressEvent} from 'axios'
@@ -67,12 +66,20 @@ const FormPage = () => {
   }
 
   return (
-    <Box className={'Uppy'}>
+    <Box component={'section'} className={'mx-auto mt-24 w-full max-w-7xl'}>
+      <NextLink href={'/'}>
+        <a>Back to Home</a>
+      </NextLink>
+      <Typography component={'h1'} level="h1">
+        フォーム
+      </Typography>
+      <Spacer />
+      <Divider />
+      <Spacer />
       <Box
         css={css`
           width: 100%;
           max-width: 20rem;
-          margin: 2rem auto 0;
         `}
         component={'form'}
         onSubmit={handleSubmit(onSubmit)}
@@ -90,22 +97,9 @@ const FormPage = () => {
           />
         </Button>
         <Spacer />
-        <Box>
-          <Button variant={'solid'} type={'submit'}>
-            Do
-          </Button>
-        </Box>
-        <Box
-          css={css`
-            display: flex;
-            justify-content: flex-end;
-          `}
-        >
-          <NextLink href={'/'}>
-            <a>Back to Home</a>
-          </NextLink>
-        </Box>
-        <Box className="UppyInput-Progress"></Box>
+        <Button variant={'solid'} type={'submit'}>
+          Do
+        </Button>
       </Box>
     </Box>
   )
