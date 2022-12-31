@@ -14,10 +14,15 @@ import {trpc} from '@/utils/trpc'
 const UserPage = () => {
   const router = useRouter()
   const {userId} = router.query
-  const {data, error, refetch, isLoading, remove} = trpc.users.byId.useQuery({
+  const {data, error, refetch, isLoading, remove} = trpc.user.byId.useQuery({
     id: userId as string,
   })
-
+  const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    router.push({
+      pathname: '/user/edit',
+    })
+  }
   return (
     <Box component={'section'} className={'mx-auto mt-24 w-full max-w-lg'}>
       <Box
@@ -40,7 +45,9 @@ const UserPage = () => {
         <Typography component={'h1'} level="h1" css={css``}>
           Focused User
         </Typography>
-        <Button variant="solid">Edit</Button>
+        <Button variant="solid" onClick={handleEdit}>
+          Edit
+        </Button>
       </Box>
       <Spacer />
       <Divider />

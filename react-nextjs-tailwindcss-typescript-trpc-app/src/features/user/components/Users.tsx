@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import NextLink from 'next/link'
+import {useRouter} from 'next/router'
 
 import {css} from '@emotion/react'
 import {Box, Button, Divider, Typography} from '@mui/joy'
@@ -17,7 +18,8 @@ import type {UsersData} from '@/features/user/types'
 import type {ErrorData} from '@/types/error'
 
 const UsersPage = () => {
-  const {data, error, refetch, isLoading, remove} = trpc.users.listUp.useQuery()
+  const router = useRouter()
+  const {data, error, refetch, isLoading, remove} = trpc.user.listUp.useQuery()
 
   const renderContent = ({
     data,
@@ -53,6 +55,13 @@ const UsersPage = () => {
     )
   }
 
+  const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    router.push({
+      pathname: '/user/create',
+    })
+  }
+
   return (
     <Box component={'section'} className={'mx-auto mt-24 w-full max-w-lg'}>
       <Box
@@ -75,7 +84,9 @@ const UsersPage = () => {
         <Typography component={'h1'} level="h1">
           Users
         </Typography>
-        <Button variant="solid">Add</Button>
+        <Button variant="solid" onClick={handleAdd}>
+          Add
+        </Button>
       </Box>
       <Spacer />
       <Divider />

@@ -56,6 +56,13 @@ const theme = extendTheme({
         },
       },
     },
+    JoyFormLabel: {
+      styleOverrides: {
+        root: {
+          margin: 0,
+        },
+      },
+    },
   },
   typography: {
     h1: {
