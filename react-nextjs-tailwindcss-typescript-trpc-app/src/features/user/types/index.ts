@@ -1,4 +1,4 @@
-import {UserSchema} from '@/features/home/domains/user'
+import {UserSchema} from '@/features/user/domains/user'
 
 import type {z} from 'zod'
 

@@ -8,7 +8,7 @@ import {Box, Button, Divider, Typography} from '@mui/joy'
 import {ArrowLeft} from 'phosphor-react'
 
 import Spacer from '@/components/ui/Spacer'
-import Profile from '@/features/home/components/Profile'
+import Profile from '@/features/user/components/Profile'
 import {trpc} from '@/utils/trpc'
 
 const UserPage = () => {

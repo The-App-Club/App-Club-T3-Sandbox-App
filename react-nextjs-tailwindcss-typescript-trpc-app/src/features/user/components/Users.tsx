@@ -13,7 +13,7 @@ import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 import Spacer from '@/components/ui/Spacer'
 import {trpc} from '@/utils/trpc'
 
-import type {UsersData} from '@/features/home/types'
+import type {UsersData} from '@/features/user/types'
 import type {ErrorData} from '@/types/error'
 
 const UsersPage = () => {

@@ -1,5 +1,5 @@
 import data from '@/data/users.json'
-import {UserSchema} from '@/features/home/domains/user'
+import {UserSchema} from '@/features/user/domains/user'
 import {publicProcedure, router} from '@/server/trpc/trpc'
 import {createId} from '@/utils/bebopUtil'
 

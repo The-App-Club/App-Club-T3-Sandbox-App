@@ -2,14 +2,14 @@ import {Box, Divider, Typography} from '@mui/joy'
 
 import Spacer from '@/components/ui/Spacer'
 
-import type {UserData} from '@/features/home/types'
+import type {UserData} from '@/features/user/types'
 
-const Profile = ({item}: {item: UserData}) => {
+const Profile = ({data}: {data: UserData}) => {
   return (
     <Box>
-      <Typography>{`id: ${item?.id}`}</Typography>
-      <Typography>{`name: ${item?.name}`}</Typography>
-      <Typography>{`email: ${item?.email}`}</Typography>
+      <Typography>{`id: ${data?.id}`}</Typography>
+      <Typography>{`name: ${data?.name}`}</Typography>
+      <Typography>{`email: ${data?.email}`}</Typography>
       <Spacer />
       <Divider />
     </Box>
