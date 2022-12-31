@@ -146,8 +146,8 @@ const EditUserPage = () => {
         />
         <Spacer height="2rem" />
         <Button
-          // disabled={!isValid}
-          // loading={isSubmitted}
+          disabled={!isValid}
+          loading={isSubmitted}
           loadingPosition="end"
           variant="solid"
           color="primary"

@@ -7,7 +7,7 @@ import {publicProcedure} from '@/server/trpc/trpc'
 import type {UserData} from '@/features/user/types'
 import type {BackendResponse} from '@/types/response'
 
-const byId = publicProcedure
+const pickUser = publicProcedure
   .input(UserSchema.pick({id: true}))
   .query(async ({ctx, input}) => {
     if (
@@ -54,4 +54,4 @@ const byId = publicProcedure
     }
   })
 
-export {byId}
+export {pickUser}

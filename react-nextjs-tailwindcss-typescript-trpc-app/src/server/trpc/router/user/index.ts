@@ -1,12 +1,14 @@
-import {byId} from '@/server/trpc/router/user/byId'
-import {create} from '@/server/trpc/router/user/create'
-import {listUp} from '@/server/trpc/router/user/listUp'
-import {update} from '@/server/trpc/router/user/update'
+import {pickUser} from '@/server/trpc/router/user/byId'
+import {createUser} from '@/server/trpc/router/user/create'
+import {deleteUser} from '@/server/trpc/router/user/delete'
+import {listUpUser} from '@/server/trpc/router/user/listUp'
+import {updateUser} from '@/server/trpc/router/user/update'
 import {router} from '@/server/trpc/trpc'
 
 export const userRouter = router({
-  listUp,
-  byId,
-  create,
-  update,
+  listUp: listUpUser,
+  byId: pickUser,
+  create: createUser,
+  update: updateUser,
+  delete: deleteUser,
 })

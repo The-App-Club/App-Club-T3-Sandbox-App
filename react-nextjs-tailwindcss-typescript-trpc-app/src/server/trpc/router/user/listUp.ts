@@ -6,7 +6,7 @@ import {publicProcedure} from '@/server/trpc/trpc'
 import type {UserData} from '@/features/user/types'
 import type {BackendResponse} from '@/types/response'
 
-const listUp = publicProcedure.query(async ({ctx, input}) => {
+const listUpUser = publicProcedure.query(async ({ctx, input}) => {
   if (
     process.env.NODE_ENV === 'development' &&
     Number(process.env.NEXT_PUBLIC_ENABLE_RANDOM_ERROR)
@@ -46,4 +46,4 @@ const listUp = publicProcedure.query(async ({ctx, input}) => {
     }
   }
 })
-export {listUp}
+export {listUpUser}

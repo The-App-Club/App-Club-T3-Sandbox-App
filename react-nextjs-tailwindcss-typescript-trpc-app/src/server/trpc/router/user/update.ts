@@ -8,7 +8,7 @@ import {publicProcedure} from '@/server/trpc/trpc'
 
 import type {UserData} from '@/features/user/types'
 
-const update = publicProcedure.input(UserSchema).mutation(({input}) => {
+const updateUser = publicProcedure.input(UserSchema).mutation(({input}) => {
   if (
     process.env.NODE_ENV === 'development' &&
     Number(process.env.NEXT_PUBLIC_ENABLE_RANDOM_ERROR)
@@ -38,4 +38,4 @@ const update = publicProcedure.input(UserSchema).mutation(({input}) => {
   }
 })
 
-export {update}
+export {updateUser}

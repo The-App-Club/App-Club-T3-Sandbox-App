@@ -61,21 +61,6 @@ const UserPage = () => {
       <Divider />
       <Spacer />
       <Profile data={data} />
-      <Spacer height="3rem" />
-      <Divider />
-      <Spacer />
-      <Typography
-        component={'p'}
-        css={css`
-          font-weight: 700;
-        `}
-      >
-        Danger Zone
-      </Typography>
-      <Spacer />
-      <Button variant="solid" fullWidth color="danger">
-        Delete
-      </Button>
     </Box>
   )
 }
