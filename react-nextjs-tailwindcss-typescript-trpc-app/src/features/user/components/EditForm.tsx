@@ -40,6 +40,7 @@ const EditForm = () => {
     formState: {errors, isValid, isSubmitted},
   } = useForm({resolver: zodResolver(UserFormSchema), mode: 'all'})
 
+  console.log(errors)
   const onSubmit = (data: any) => {
     setError('Do submit', {
       message: 'Thank you submit!',
@@ -116,9 +117,9 @@ const EditForm = () => {
       />
       <Spacer height="2rem" />
       <Button
-        disabled={!isValid}
-        loading={isSubmitted}
-        loadingPosition="end"
+        // disabled={!isValid}
+        // loading={isSubmitted}
+        // loadingPosition="end"
         variant="solid"
         color="primary"
         fullWidth
