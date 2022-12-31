@@ -37,9 +37,10 @@ const EditForm = () => {
     register,
     handleSubmit,
     setError,
+    getValues,
     formState: {errors, isValid, isSubmitted},
   } = useForm({resolver: zodResolver(UserFormSchema), mode: 'all'})
-
+  console.log(getValues())
   console.log(errors)
   const onSubmit = (data: any) => {
     setError('Do submit', {
@@ -115,11 +116,22 @@ const EditForm = () => {
         register={register}
         errors={errors}
       />
+      <Spacer />
+      <BebopTextField
+        name={'age'}
+        type={'number'}
+        labelName={`年齢`}
+        placeholder={`21`}
+        tooltipText="年齢のツールチップになります"
+        defaultValue={'22'}
+        register={register}
+        errors={errors}
+      />
       <Spacer height="2rem" />
       <Button
-        // disabled={!isValid}
-        // loading={isSubmitted}
-        // loadingPosition="end"
+        disabled={!isValid}
+        loading={isSubmitted}
+        loadingPosition="end"
         variant="solid"
         color="primary"
         fullWidth

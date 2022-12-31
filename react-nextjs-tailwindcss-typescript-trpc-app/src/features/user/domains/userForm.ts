@@ -6,7 +6,20 @@ export const UserFormSchema = z.object({
     .string()
     .min(1, '必須入力です')
     .email('メールアドレスの形式が不正です'),
-  // age: z.number().nullish(), // allow optional
+  age: z
+    .number()
+    .nullish()
+    .refine(
+      (value: number | null | undefined) => {
+        if (!value) {
+          return false
+        }
+        return value > 0
+      },
+      (value: number | null | undefined) => {
+        return {message: '年齢は1歳以上で入力してください'}
+      }
+    ), // allow optional
   // age: z.number().nullable(), // not allow optional
 })
 

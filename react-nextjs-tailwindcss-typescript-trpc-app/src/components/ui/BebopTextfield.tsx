@@ -14,7 +14,7 @@ const BebopTextField = ({
   tooltipText = `お名前のツールチップ`,
   placeholder = `山田太郎`,
   autoFocus = false,
-  required = true,
+  required = false,
   disabled = false,
   defaultValue = ``,
   register,
@@ -70,7 +70,9 @@ const BebopTextField = ({
         autoFocus={autoFocus}
         type={type}
         defaultValue={defaultValue}
-        {...register(name)}
+        {...register(name, {
+          valueAsNumber: type === 'number', // https://stackoverflow.com/a/70998738/15972569
+        })}
         error={!!errors[name]}
         helperText={errors[name] ? errors[name].message : ''}
       />
