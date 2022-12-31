@@ -2,12 +2,16 @@
 import NextLink from 'next/link'
 
 import {css} from '@emotion/react'
-import {Box, Button, Divider, TextField, Typography} from '@mui/joy'
-import axios from 'axios'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {Box, Button, Divider, Typography} from '@mui/joy'
 import {ArrowLeft} from 'phosphor-react'
 import {useForm} from 'react-hook-form'
 
+import BebopFileUploader from '@/components/ui/BebopFileUploader'
+import BebopTextField from '@/components/ui/BebopTextfield'
 import Spacer from '@/components/ui/Spacer'
+import {ExampleFormSchema} from '@/features/form/domains/exampleForm'
+import {axios} from '@/libs/axios'
 
 import type {AxiosProgressEvent} from 'axios'
 
@@ -16,15 +20,15 @@ const FormPage = () => {
     register,
     handleSubmit,
     watch,
-    formState: {errors},
-  } = useForm()
+    formState: {errors, isValid, isSubmitted},
+  } = useForm({resolver: zodResolver(ExampleFormSchema), mode: 'all'})
   const onSubmit = async (data: any) => {
-    const [file] = [...watch('avator')]
-    const willUploadedData = {...data, file}
+    const [file] = data.avator
+    const willUploadedData = {...data, avator: file}
     console.log(willUploadedData)
     const formData = new FormData()
     formData.append('example', willUploadedData.example)
-    formData.append('avator', willUploadedData.file)
+    formData.append('avator', willUploadedData.avator)
 
     const response = await axios.post('/api/upload', formData, {
       headers: {'content-type': 'multipart/form-data'},
@@ -39,31 +43,6 @@ const FormPage = () => {
       },
     })
     console.log('response', response.data)
-  }
-
-  const renderPreview = () => {
-    if (!watch('avator')) {
-      return null
-    }
-    const [file] = [...watch('avator')]
-    if (!file) {
-      return null
-    }
-    const preview = window.URL.createObjectURL(file)
-    return (
-      <picture>
-        <source srcSet={preview} type={`image/png`} />
-        <img
-          src={preview}
-          alt={'cover'}
-          css={css`
-            width: 100%;
-            display: block;
-            object-fit: contain;
-          `}
-        />
-      </picture>
-    )
   }
 
   return (
@@ -102,26 +81,46 @@ const FormPage = () => {
       <Box
         css={css`
           width: 100%;
-          max-width: 20rem;
+          max-width: 100%;
         `}
         component={'form'}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <TextField defaultValue="test" {...register('example')} />
+        <BebopTextField
+          autoFocus
+          name={'example'}
+          type={'text'}
+          labelName={`Example Field`}
+          placeholder={`Something value`}
+          required
+          tooltipText="Example Fieldのツールチップになります"
+          defaultValue={``}
+          register={register}
+          errors={errors}
+        />
         <Spacer />
-        {renderPreview()}
-        <Button variant="solid" component="label">
-          ファイルを選択
-          <input
-            type="file"
-            hidden
-            accept=".jpg,.png,.jpeg"
-            {...register('avator')}
-          />
-        </Button>
+        <BebopFileUploader
+          name="avator"
+          labelName={`アバター画像`}
+          required
+          tooltipText="アバター画像のツールチップになります"
+          register={register}
+          watch={watch}
+          error={errors['avator']}
+        />
         <Spacer />
-        <Button variant={'solid'} type={'submit'}>
-          Do
+        <Divider />
+        <Spacer height="3rem" />
+        <Button
+          variant="solid"
+          color="primary"
+          type={'submit'}
+          fullWidth
+          disabled={!isValid}
+          loading={isSubmitted}
+          loadingPosition="end"
+        >
+          送信する
         </Button>
       </Box>
     </Box>
