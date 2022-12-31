@@ -12,9 +12,13 @@ import {useForm} from 'react-hook-form'
 import BebopTextField from '@/components/ui/BebopTextfield'
 import Spacer from '@/components/ui/Spacer'
 import {UserFormSchema} from '@/features/user/domains/userForm'
+import {createId} from '@/utils/bebopUtil'
+import {merge} from '@/utils/mergeUtil'
 import {trpc} from '@/utils/trpc'
 
+import type {User} from '@/features/user/domains/user'
 import type {UserForm} from '@/features/user/domains/userForm'
+import type {Merge} from 'type-fest'
 
 const CreateUserPage = () => {
   const router = useRouter()
@@ -31,7 +35,10 @@ const CreateUserPage = () => {
       message: 'Thank you submit!',
       type: 'disabled',
     })
-    const willPostedData: UserForm = data
+    const willPostedData = merge(data, {id: createId()}) as Merge<
+      Pick<User, 'id'>,
+      UserForm
+    >
     mutate(willPostedData, {
       onSuccess: function (data, variables, context) {
         console.log(`[onSuccess]`)
@@ -82,6 +89,7 @@ const CreateUserPage = () => {
       <Spacer />
       <Divider />
       <Spacer />
+
       <Box
         component={'form'}
         css={css`

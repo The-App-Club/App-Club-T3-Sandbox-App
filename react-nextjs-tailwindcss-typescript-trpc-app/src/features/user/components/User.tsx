@@ -9,10 +9,12 @@ import {ArrowLeft} from 'phosphor-react'
 
 import Spacer from '@/components/ui/Spacer'
 import Profile from '@/features/user/components/Profile'
+import useSidebar from '@/features/user/hooks/useSidebar'
 import {trpc} from '@/utils/trpc'
 
 const UserPage = () => {
   const router = useRouter()
+  const {setSidebar} = useSidebar()
   const {userId} = router.query
   const {data, error, refetch, isLoading, remove} = trpc.user.byId.useQuery({
     id: userId as string,
@@ -21,6 +23,12 @@ const UserPage = () => {
     e.stopPropagation()
     router.push({
       pathname: '/user/edit',
+    })
+    setSidebar((prevState) => {
+      return {
+        ...prevState,
+        activeUser: data,
+      }
     })
   }
   return (

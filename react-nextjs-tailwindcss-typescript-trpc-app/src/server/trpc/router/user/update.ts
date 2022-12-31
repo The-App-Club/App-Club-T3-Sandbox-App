@@ -8,7 +8,7 @@ import {publicProcedure} from '@/server/trpc/trpc'
 
 import type {UserData} from '@/features/user/types'
 
-const create = publicProcedure.input(UserSchema).mutation(({input}) => {
+const update = publicProcedure.input(UserSchema).mutation(({input}) => {
   if (
     process.env.NODE_ENV === 'development' &&
     Number(process.env.NEXT_PUBLIC_ENABLE_RANDOM_ERROR)
@@ -23,12 +23,14 @@ const create = publicProcedure.input(UserSchema).mutation(({input}) => {
     encoding: 'utf-8',
   })
   const oldUsers: UserData[] = JSON.parse(original)
-  oldUsers.push({
-    id: input.name,
-    name: input.name,
-    email: input.email,
+  const newUser: UserData = input
+  const newUsers = oldUsers.map((item) => {
+    if (item?.id === newUser.id) {
+      return newUser
+    }
+    return item
   })
-  writeFileSync(path, JSON.stringify(oldUsers, null, 2), {
+  writeFileSync(path, JSON.stringify(newUsers, null, 2), {
     flag: 'w',
   })
   return {
@@ -36,4 +38,4 @@ const create = publicProcedure.input(UserSchema).mutation(({input}) => {
   }
 })
 
-export {create}
+export {update}

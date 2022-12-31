@@ -15,6 +15,7 @@ const BebopTextField = ({
   placeholder = `山田太郎`,
   autoFocus = false,
   required = true,
+  disabled = false,
   defaultValue = ``,
   register,
   errors,
@@ -26,6 +27,7 @@ const BebopTextField = ({
   placeholder?: string
   autoFocus?: boolean
   required?: boolean
+  disabled?: boolean
   defaultValue?: string
   register: UseFormRegister<FieldValues>
   errors: any
@@ -62,6 +64,8 @@ const BebopTextField = ({
       </Box>
       <Spacer height="0.5rem" />
       <TextField
+        id={`${name}-textfield`}
+        disabled={disabled}
         placeholder={placeholder}
         autoFocus={autoFocus}
         type={type}
