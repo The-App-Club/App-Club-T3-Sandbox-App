@@ -7,6 +7,7 @@ import {CacheProvider} from '@emotion/react'
 import {CssBaseline} from '@mui/joy'
 import {CssVarsProvider} from '@mui/joy/styles'
 import NextNProgress from 'nextjs-progressbar'
+import {Toaster} from 'react-hot-toast'
 import {RecoilRoot} from 'recoil'
 
 import createEmotionCache from '@/config/createEmotionCache'
@@ -29,7 +30,7 @@ const BebopApp = (props: AppProps) => {
         height={3}
         showOnShallow={true}
       />
-
+      <Toaster position="bottom-left" reverseOrder={false} />
       <MyApp {...props} />
     </RecoilRoot>
   )

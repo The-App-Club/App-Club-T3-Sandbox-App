@@ -15,6 +15,7 @@ import BebopTextField from '@/components/ui/BebopTextfield'
 import Spacer from '@/components/ui/Spacer'
 import {UserFormSchema} from '@/features/user/domains/userForm'
 import useSidebar from '@/features/user/hooks/useSidebar'
+import useToast from '@/libs/useToast'
 import {merge} from '@/utils/mergeUtil'
 import {trpc} from '@/utils/trpc'
 
@@ -25,6 +26,7 @@ import type {Merge} from 'type-fest'
 const EditUserPage = () => {
   const router = useRouter()
   const {activeSidebar} = useSidebar()
+  const {successToast, errorToast} = useToast()
   const {mutate, reset} = trpc.user.update.useMutation()
 
   const {activeUser} = useMemo(() => {
@@ -52,12 +54,14 @@ const EditUserPage = () => {
     mutate(willPostedData, {
       onSuccess: function (data, variables, context) {
         console.log(`[onSuccess]`)
+        successToast('更新しました')
         router.push({
           pathname: '/users',
         })
       },
       onError: function (error, variables, context) {
         console.log(`[onError]`)
+        errorToast('更新に失敗しました')
       },
       onSettled: function (data, error, variables, context) {
         console.log(`[onSettled]`)

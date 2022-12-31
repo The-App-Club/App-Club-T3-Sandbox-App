@@ -12,6 +12,7 @@ import {useForm} from 'react-hook-form'
 import BebopTextField from '@/components/ui/BebopTextfield'
 import Spacer from '@/components/ui/Spacer'
 import {UserFormSchema} from '@/features/user/domains/userForm'
+import useToast from '@/libs/useToast'
 import {createId} from '@/utils/bebopUtil'
 import {merge} from '@/utils/mergeUtil'
 import {trpc} from '@/utils/trpc'
@@ -22,6 +23,7 @@ import type {Merge} from 'type-fest'
 
 const CreateUserPage = () => {
   const router = useRouter()
+  const {successToast, errorToast} = useToast()
   const {mutate, reset} = trpc.user.create.useMutation()
   const {
     register,
@@ -42,12 +44,14 @@ const CreateUserPage = () => {
     mutate(willPostedData, {
       onSuccess: function (data, variables, context) {
         console.log(`[onSuccess]`)
+        successToast('登録しました')
         router.push({
           pathname: '/users',
         })
       },
       onError: function (error, variables, context) {
         console.log(`[onError]`)
+        errorToast('登録に失敗しました')
       },
       onSettled: function (data, error, variables, context) {
         console.log(`[onSettled]`)
