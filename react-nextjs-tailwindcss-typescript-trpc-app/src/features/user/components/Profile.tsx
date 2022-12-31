@@ -1,6 +1,4 @@
-import {Box, Divider, Typography} from '@mui/joy'
-
-import Spacer from '@/components/ui/Spacer'
+import {Box, Typography} from '@mui/joy'
 
 import type {UserData} from '@/features/user/types'
 
@@ -10,8 +8,6 @@ const Profile = ({data}: {data: UserData}) => {
       <Typography>{`id: ${data?.id}`}</Typography>
       <Typography>{`name: ${data?.name}`}</Typography>
       <Typography>{`email: ${data?.email}`}</Typography>
-      <Spacer />
-      <Divider />
     </Box>
   )
 }
