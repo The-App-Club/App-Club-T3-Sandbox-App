@@ -4,6 +4,7 @@ import NextLink from 'next/link'
 import {css} from '@emotion/react'
 import {Box, Button, Divider, TextField, Typography} from '@mui/joy'
 import axios from 'axios'
+import {ArrowLeft} from 'phosphor-react'
 import {useForm} from 'react-hook-form'
 
 import Spacer from '@/components/ui/Spacer'
@@ -66,13 +67,35 @@ const FormPage = () => {
   }
 
   return (
-    <Box component={'section'} className={'mx-auto mt-24 w-full max-w-7xl'}>
-      <NextLink href={'/'}>
-        <a>Back to Home</a>
-      </NextLink>
-      <Typography component={'h1'} level="h1">
-        フォーム
-      </Typography>
+    <Box component={'section'} className={'mx-auto mt-24 w-full max-w-lg'}>
+      <Box
+        css={css`
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        `}
+      >
+        <NextLink href={'/'} passHref>
+          <ArrowLeft
+            size={32}
+            css={css`
+              :hover {
+                cursor: pointer;
+              }
+            `}
+          />
+        </NextLink>
+        <Typography
+          component={'h1'}
+          level="h1"
+          css={css`
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          `}
+        >
+          フォーム
+        </Typography>
+      </Box>
       <Spacer />
       <Divider />
       <Spacer />

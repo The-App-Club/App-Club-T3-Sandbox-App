@@ -6,9 +6,9 @@ import {type NextPage} from 'next'
 import ErrorBoundary from '@/components/fallback/ErrorBoundary'
 import {FallbackLoading} from '@/components/fallback/FallbackLoading'
 
-const Sample = lazy(() => import('@/features/sample/components/Sample'))
+const User = lazy(() => import('@/features/user/components/User'))
 
-const SamplePage: NextPage = () => {
+const UserPage: NextPage = () => {
   return (
     <ErrorBoundary>
       <Suspense
@@ -22,10 +22,10 @@ const SamplePage: NextPage = () => {
           </Box>
         }
       >
-        <Sample />
+        <User />
       </Suspense>
     </ErrorBoundary>
   )
 }
 
-export default SamplePage
+export default UserPage

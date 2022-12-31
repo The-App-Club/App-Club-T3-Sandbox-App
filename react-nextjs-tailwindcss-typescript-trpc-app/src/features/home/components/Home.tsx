@@ -1,67 +1,33 @@
-import {Box, Button, Divider, Typography} from '@mui/joy'
+/** @jsxImportSource @emotion/react */
 
-import {FallbackDataEmpty} from '@/components/fallback/FallbackDataEmpty'
-import {FallbackError} from '@/components/fallback/FallbackError'
-import {FallbackLoading} from '@/components/fallback/FallbackLoading'
+import NextLink from 'next/link'
+
+import {css} from '@emotion/react'
+import {Box, Divider, Typography} from '@mui/joy'
+import {Link} from '@mui/joy'
+
 import Spacer from '@/components/ui/Spacer'
-import {trpc} from '@/utils/trpc'
-
-import type {UsersData} from '@/features/home/types'
-import type {ErrorData} from '@/types/error'
 
 const Home = () => {
-  const {data, error, refetch, isLoading, remove} = trpc.users.listUp.useQuery()
-
-  const renderContent = ({
-    data,
-    error,
-    isLoading,
-  }: {
-    data: UsersData
-    error: ErrorData
-    isLoading: boolean
-  }) => {
-    if (error) {
-      return <FallbackError />
-    }
-
-    if (isLoading) {
-      return <FallbackLoading />
-    }
-
-    if (data?.length === 0) {
-      return <FallbackDataEmpty />
-    }
-
-    return (
-      <>
-        {data?.map((item, index) => {
-          return <Typography key={index}>{item?.name}</Typography>
-        })}
-      </>
-    )
-  }
-
   return (
-    <Box component={'section'} className={'mx-auto mt-24 w-full max-w-7xl'}>
-      <Typography component={'h1'} level="h1">
+    <Box component={'section'} className={'mx-auto mt-24 w-full max-w-lg'}>
+      <Typography
+        component={'h1'}
+        level="h1"
+        css={css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        `}
+      >
         ホーム
       </Typography>
       <Spacer />
       <Divider />
       <Spacer />
-      <Button
-        variant="solid"
-        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-          e.stopPropagation()
-          remove()
-          refetch()
-        }}
-      >
-        Refetch
-      </Button>
-      <Spacer />
-      {renderContent({data, error, isLoading})}
+      <NextLink href={`/users`} passHref>
+        <Link underline="none">Users</Link>
+      </NextLink>
     </Box>
   )
 }

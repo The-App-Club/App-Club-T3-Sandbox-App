@@ -1,11 +1,43 @@
-import {extendTheme} from '@mui/joy/styles'
 import '@fontsource/inter'
 import '@fontsource/radio-canada'
 import '@fontsource/noto-sans-jp'
 
+import {extendTheme} from '@mui/joy/styles'
+import colors from 'tailwindcss/colors'
+
+// https://github.com/d3/d3-scale-chromatic
+// https://github.com/Evercoder/culori
+// https://observablehq.com/@d3/color-schemes
+// https://mui.com/joy-ui/react-button/
+// https://tailwindcss.com/docs/customizing-colors
+// https://tailwind.ink/code
 const theme = extendTheme({
   fontFamily: {
-    body: 'Inter, serif',
+    body: '"Noto Sans JP", serif',
+  },
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: {
+          ...colors.sky,
+        },
+        neutral: {
+          ...colors.gray,
+        },
+        danger: {
+          ...colors.red,
+        },
+        info: {
+          ...colors.slate,
+        },
+        success: {
+          ...colors.green,
+        },
+        warning: {
+          ...colors.amber,
+        },
+      },
+    },
   },
   components: {
     JoyLink: {
@@ -39,7 +71,7 @@ const theme = extendTheme({
       lineHeight: '1.75rem' /* 28px */,
     },
     display1: {
-      fontFamily: '"Noto Sans JP", sans-serif',
+      fontFamily: 'Inter, sans-serif',
     },
     display2: {
       fontFamily: '"Radio Canada", sans-serif',
