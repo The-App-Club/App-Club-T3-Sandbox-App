@@ -24,7 +24,7 @@ const createUser = publicProcedure.input(UserSchema).mutation(({input}) => {
   })
   const oldUsers: UserData[] = JSON.parse(original)
   oldUsers.push({
-    id: input.name,
+    id: input.id,
     name: input.name,
     email: input.email,
   })
